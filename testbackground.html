@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Greetings</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: url('imgs/WhatsApp Image 2023-12-22 at 22.33.16 (5).jpeg') center/cover no-repeat;
+            background-size: cover; /* Make the background image cover the whole screen */
+            transition: background 0.5s ease-in-out;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 3%;
+            left: 50%;
+            display: flex;
+            gap: 2vw; /* Adjust as needed */
+        }
+
+        .change-background-btn,
+        .buttonTap {
+            padding: 4vw 6vw; /* Adjust as needed */
+            font-size: 4vw; /* Adjust as needed */
+            cursor: pointer;
+            background-color: #660000;
+            color: white;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .christmas-message {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            color: #fff;
+            font-size: 9vw; /* Adjust as needed */
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button-container">
+        <button class="change-background-btn" onclick="toggleSpecialPoem()">Special</button>
+        <button class="buttonTap" onclick="changeBackground()">Tap</button>
+    </div>
+    <div class="christmas-message">
+        <p>Feliz Natal Catarina!</p>
+    </div>
+
+    <script>
+        const backgrounds = [
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16.jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (1).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (2).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (3).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (5).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (6).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (7).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (8).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (9).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (10).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (11).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (12).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (13).jpeg',
+            'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (9).jpeg',
+        ];
+
+        const specialBackground = 'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (6).jpeg';
+        const specialPoem = 'A special poem for you,\nWrapped in moments old and new.\nUnderneath this starry light,\nWishing joy that feels just right.';
+        const backText = "Feliz Natal Catarina!"
+
+        let currentBackgroundIndex = 0;
+        let audio;
+
+        let specialState = false; // Variable to track the state of the special button
+
+        function changeBackground() {
+            currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+            document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+
+            if (!audio) {
+                // If audio is not defined, create and play the audio
+                audio = new Audio('songs/Y2meta.app - grentperez - Christmas Starts Tonight (Official Audio) (320 kbps).mp3'); // Replace with the actual path to your audio file
+                audio.play();
+            }
+        }
+
+        function toggleSpecialPoem() {
+            if (specialState) {
+                // If specialState is true, revert to the original state
+                document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+                document.querySelector('.change-background-btn').innerText = 'Special';
+                const christmasMessage = document.querySelector('.christmas-message');
+                christmasMessage.innerHTML = `<p>${backText}</p>`;
+                christmasMessage.style.display = 'block';
+                specialState = false;
+            } else {
+                // If specialState is false, switch to the special state
+                document.body.style.backgroundImage = `url('${specialBackground}')`;
+                document.querySelector('.change-background-btn').innerText = 'Back';
+                const christmasMessage = document.querySelector('.christmas-message');
+                christmasMessage.innerHTML = `<p>${specialPoem}</p>`;
+                christmasMessage.style.display = 'block';
+                specialState = true;
+            }
+        }
+
+        // Display the Christmas message after the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            const christmasMessage = document.querySelector('.christmas-message');
+            christmasMessage.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
