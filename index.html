@@ -22,7 +22,7 @@
         .button-container {
             position: absolute;
             top: 3%;
-            left: 50%;
+            left: 55%;
             display: flex;
             gap: 2vw; /* Adjust as needed */
         }
@@ -45,7 +45,7 @@
             transform: translate(-50%, -50%);
             text-align: center;
             font-family: cursive; /* Change to 'cursive' */
-            color: #fff;
+            color: #660000;
             font-size: 9vw; /* Default font size for larger screens */
             opacity: 0;
             animation: fadeIn 2s ease-out forwards;
@@ -68,7 +68,7 @@
 
 <body>
     <div class="button-container">
-        <button class="change-background-btn" onclick="toggleSpecialPoem()">Special</button>
+        <button class="change-background-btn" onclick="toggleSpecialPoem()">?</button>
         <button class="buttonTap" onclick="changeBackground()">Tap</button>
     </div>
     <div class="christmas-message">
@@ -94,7 +94,7 @@
         ];
 
         const specialBackground = 'imgs/WhatsApp Image 2023-12-22 at 22.33.16 (6).jpeg';
-        const specialPoem = 'Neste Natal a brilhar,<br>Alegria a transbordar,<br>Desejo-te paz nesta noite de luar.<br>Foste a melhor parte do meu ano,<br>Espero que estejas bem,<br>És a luz e o encanto.<br>Feliz Natal!!!';
+        const specialPoem = 'Neste Natal a brilhar,<br>Alegria a transbordar,<br>Desejo-te paz nesta noite de luar.<br>Foste a melhor parte do meu ano,<br>Espero que estejas bem,<br>És a luz e o encanto.<br>Feliz Natal ♡';
         const backText = "Feliz Natal Catarina!"
 
         let currentBackgroundIndex = 0;
@@ -117,7 +117,7 @@
             if (specialState) {
                 // If specialState is true, revert to the original state
                 document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
-                document.querySelector('.change-background-btn').innerText = 'Special';
+                document.querySelector('.change-background-btn').innerText = '?';
                 const christmasMessage = document.querySelector('.christmas-message');
                 christmasMessage.innerHTML = `<p>${backText}</p>`;
                 christmasMessage.style.display = 'block';
