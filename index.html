@@ -69,7 +69,7 @@
 
 <body>
     <div class="button-container">
-        <button class="change-background-btn" onclick="toggleSpecialPoem()">?</button>
+        <button class="change-background-btn" onclick="toggleSpecialPoem()">ღ</button>
         <button class="buttonTap" onclick="changeBackground()">Tap</button>
     </div>
     <div class="christmas-message">
@@ -124,7 +124,7 @@
             if (specialState) {
                 // If specialState is true, revert to the original state
                 document.body.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
-                document.querySelector('.change-background-btn').innerText = '?';
+                document.querySelector('.change-background-btn').innerText = 'ღ';
                 const christmasMessage = document.querySelector('.christmas-message');
                 christmasMessage.innerHTML = `<p>${backText}</p>`;
                 christmasMessage.style.display = 'block';
